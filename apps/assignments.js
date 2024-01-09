@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { assignments as assignmentsFromFile } from "../data/assignments.js";
 import { comments as commentsFromFile } from "../data/comments.js";
-
+// import validateAssignmentData มา
 import { validateAssignmentData } from "../middleware/assignmentValidation.js";
 
 let assignments = [...assignmentsFromFile];
@@ -32,7 +32,7 @@ assignmentRouter.get("/:id", (req, res) => {
     data: assignment[0],
   });
 });
-
+// ใส่ validateAssignmentData ใน post และ put เพื่อให้เจาะจงไปที่ API ที่ต้องการ
 assignmentRouter.post("/", validateAssignmentData, (req, res) => {
   const newAssignment = req.body;
   const newAssignmentId = assignments[assignments.length - 1].id + 1;

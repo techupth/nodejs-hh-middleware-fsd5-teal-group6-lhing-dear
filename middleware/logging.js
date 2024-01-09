@@ -7,7 +7,7 @@ const logging = async (req, res, next) => {
   } catch {
     await fs.appendFile(
       "logs.txt",
-      `Logging Error on IP: ${req.ip}, Method: ${req.method}, ${req.endpoint}\n`
+      `Logging Error on IP: ${req.ip}, Method: ${req.method}, ${req.originalUrl}\n`
     );
   }
   next(); // อย่าลืม next
